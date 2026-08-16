@@ -1,9 +1,6 @@
 import React from 'react'
 
-function Header( {cart, total, decreaceQuantity, increaceQuantity, deleteGuitar, emptyCart} ) {
-
-    //state deriado
-    const isEmpty = () => cart.length === 0
+function Header( {cart, total, isEmpty, decreaceQuantity, increaceQuantity, deleteItem, clearCart} ) {
 
     return (
         <header className="py-5 header">
@@ -21,7 +18,7 @@ function Header( {cart, total, decreaceQuantity, increaceQuantity, deleteGuitar,
                             <img className="img-fluid" src="/img/carrito.png" alt="imagen carrito" />
 
                             <div id="carrito" className="bg-white p-3">
-                                { isEmpty() ? (
+                                { isEmpty ? (
                                         <p className="text-center fw-bold fs-4">El carrito esta vacio</p>
                                     ) : (
                                         <>
@@ -64,7 +61,7 @@ function Header( {cart, total, decreaceQuantity, increaceQuantity, deleteGuitar,
                                                                 <button
                                                                     className="btn btn-danger"
                                                                     type="button"
-                                                                    onClick={() => deleteGuitar(guitar.id)}
+                                                                    onClick={() => deleteItem(guitar.id)}
                                                                 >
                                                                     X
                                                                 </button>
@@ -75,7 +72,7 @@ function Header( {cart, total, decreaceQuantity, increaceQuantity, deleteGuitar,
                                             </table>
 
                                             <p className="text-end fs-4">Total pagar: <span className="fw-bold">${total}</span></p>
-                                            <button className="btn btn-dark w-100 mt-3 p-2" onClick={emptyCart}>
+                                            <button className="btn btn-dark w-100 mt-3 p-2" onClick={clearCart}>
                                                 Vaciar Carrito
                                             </button>                                
                                         </>
